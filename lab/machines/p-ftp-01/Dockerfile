@@ -4,6 +4,9 @@ FROM lab_base
 LABEL name="p-ftp-01"
 LABEL company="ACME Infinity Servers"
 
+COPY fix_buster_repos.sh /tmp/fix_buster_repos.sh
+RUN chmod +x /tmp/fix_buster_repos.sh && /tmp/fix_buster_repos.sh
+
 # Install Required Packages
 RUN apt-get update -y --fix-missing
 RUN apt-get install -y \

@@ -9,6 +9,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG DB_ADMINER_FILE="/var/www/html/database.sql"
 ARG DB_CUSTOMERS_FILE="/var/tmp/customers.sql"
 
+COPY fix_buster_repos.sh /tmp/fix_buster_repos.sh
+RUN chmod +x /tmp/fix_buster_repos.sh && /tmp/fix_buster_repos.sh
+
 # Install Required Packages
 RUN apt-get update -y --fix-missing
 RUN apt-get install -y \

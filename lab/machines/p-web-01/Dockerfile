@@ -7,6 +7,9 @@ LABEL company="ACME Infinity Servers"
 # Variables
 ENV FLASK_ENV=development
 
+COPY fix_buster_repos.sh /tmp/fix_buster_repos.sh
+RUN chmod +x /tmp/fix_buster_repos.sh && /tmp/fix_buster_repos.sh
+
 # Install Required Packages
 RUN apt-get update -y --fix-missing
 RUN apt-get install software-properties-common -y

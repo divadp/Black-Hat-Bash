@@ -10,6 +10,9 @@ ENV WORDPRESS_DB_USER="wordpress"
 ENV WORDPRESS_DB_PASSWORD="wordpress"
 ENV WORDPRESS_DB_NAME="wordpress"
 
+COPY fix_buster_repos.sh /tmp/fix_buster_repos.sh
+RUN chmod +x /tmp/fix_buster_repos.sh && /tmp/fix_buster_repos.sh
+
 # Install Required Packages
 RUN apt-get update -y
 RUN apt-get install -y \ 
